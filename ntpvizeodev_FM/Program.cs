@@ -10,6 +10,12 @@ namespace ntpvizeodev_FM
     {
         static void Main(string[] args)
         {
+            int a;
+        }
+
+        public static void yeni()
+        {
+
         }
     }
 }
