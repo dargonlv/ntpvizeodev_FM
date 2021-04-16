@@ -20,6 +20,14 @@ namespace ntpvizeodev_FM
 
 
             
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Element("title").Value);
+                
+
+                Console.WriteLine("\n-------------------------------------------\n");
+
+            }
             Console.ReadKey();
         }
 
