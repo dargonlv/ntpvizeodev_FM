@@ -26,7 +26,7 @@ namespace ntpvizeodev_FM
                 Console.WriteLine(Convert.ToDateTime(item.Element("pubDate").Value));////<----///
                 XElement aciklama = item.Element("description");
                 uzunluk = aciklama.Value.IndexOf("&", 0, aciklama.Value.Length - 1);
-                Console.WriteLine(aciklama.Value.Substring(0, uzunluk));
+                Console.WriteLine(aciklama.Value.Substring(0, uzunluk-3));
 
 
                 Console.WriteLine("\n-------------------------------------------\n");
