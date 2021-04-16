@@ -15,7 +15,7 @@ namespace ntpvizeodev_FM
             XElement site;
             site = XElement.Load("http://rss.beyazperde.com/haberler/filmler?format=xml");
 
-            var list = site.Elements().Elements("item").ToList();
+            var list = site.Elements("item").ToList();
 
 
 
@@ -23,6 +23,7 @@ namespace ntpvizeodev_FM
             foreach (var item in list)
             {
                 Console.WriteLine(item.Element("title").Value);
+                Console.WriteLine(Convert.ToDateTime(item.Element("pubDate").Value));
                 
 
                 Console.WriteLine("\n-------------------------------------------\n");
