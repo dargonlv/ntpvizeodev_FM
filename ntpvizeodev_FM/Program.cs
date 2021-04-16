@@ -19,12 +19,15 @@ namespace ntpvizeodev_FM
 
 
 
-            
+            int uzunluk;
             foreach (var item in list)
             {
                 Console.WriteLine(item.Element("title").Value);
                 Console.WriteLine(Convert.ToDateTime(item.Element("pubDate").Value));////<----///
-                
+                XElement aciklama = item.Element("description");
+                uzunluk = aciklama.Value.IndexOf("&", 0, aciklama.Value.Length - 1);
+                Console.WriteLine(aciklama.Value.Substring(0, uzunluk));
+
 
                 Console.WriteLine("\n-------------------------------------------\n");
 
