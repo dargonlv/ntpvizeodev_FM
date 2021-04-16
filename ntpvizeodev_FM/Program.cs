@@ -15,6 +15,10 @@ namespace ntpvizeodev_FM
             XElement site;
             site = XElement.Load("http://rss.beyazperde.com/haberler/filmler?format=xml");
 
+            var list = site.Elements().Elements("item").ToList();
+
+
+
             
             Console.ReadKey();
         }
