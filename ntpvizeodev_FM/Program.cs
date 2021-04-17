@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.IO;
 
 namespace ntpvizeodev_FM
 {
@@ -12,6 +13,14 @@ namespace ntpvizeodev_FM
         
         static void Main(string[] args)
         {
+
+            
+            if (File.Exists("deneme.txt"))
+            {
+                FileStream fs = new FileStream("deneme.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            }
+
+
             XElement site;
             site = XElement.Load("http://rss.beyazperde.com/haberler/filmler?format=xml");
 
