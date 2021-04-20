@@ -5,25 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.IO;
-using System.Timers;
+
 
 namespace ntpvizeodev_FM
 {
     class Program
     {
-        
+        public static XElement site = XElement.Load("http://rss.beyazperde.com/haberler/filmler?format=xml");
+        public static List<XElement> list = site.Elements().Elements("item").ToList();
         static void Main(string[] args)
         {
-            Timer t = new Timer(1000);//60000 = 1 dakka 60000*5=300000
-            t.Elapsed += new ElapsedEventHandler(islemler);
-            t.Start();
-            while (true)
-            {
+            
 
+        
             }
-        }
 
-        public static void islemler(object o, ElapsedEventArgs a)
+        public static void islemler()
         {
             if (File.Exists("deneme.txt"))
             {
@@ -36,16 +33,7 @@ namespace ntpvizeodev_FM
                 fs.Close();
             }
 
-
-            XElement site;
-            site = XElement.Load("http://rss.beyazperde.com/haberler/filmler?format=xml");
-
-            var list = site.Elements().Elements("item").ToList();
-            /////////////////////////////
-            StreamReader eski = new StreamReader("deneme.txt");
-            string eskiveri= eski.ReadToEnd();
-            eski.Close();
-            ////////////////////////////////
+            
             StreamWriter sil = new StreamWriter("deneme.txt");
             sil.Write("");
             sil.Close();
@@ -72,17 +60,40 @@ namespace ntpvizeodev_FM
 
             }
             Yaz.Close();
-            ////////////////////////////////////////////
-            StreamReader yeni = new StreamReader("deneme.txt");
-            string yeniveri = yeni.ReadToEnd();
-            if (yeniveri!=eskiveri)
-            {
-                Console.WriteLine("\n\tYeni bir kaç haber var !!\n");
-            }
-            yeni.Close();
-            ///////////////////////////////////////////////
             Console.ReadKey();
         }
+
+        public static void ss()
+        {
+            
+            while (true)
+            {
+
+                StreamReader eski = new StreamReader("deneme.txt");
+                string eskiveri = eski.ReadToEnd();
+                eski.Close();
+
+                StreamWriter Yaz = new StreamWriter("deneme.txt", true);
+                int uzunluk;
+                string yeniveri = "";
+                foreach (var items in list)
+                {
+                    XElement aciklama = items.Element("description");
+                    uzunluk = aciklama.Value.IndexOf("&", 0, aciklama.Value.Length - 1);
+
+                    yeniveri += (items.Element("title").Value) + "\n";
+                    yeniveri += (Convert.ToDateTime(items.Element("pubDate").Value)) + "\n";
+
+                    yeniveri += (aciklama.Value.Substring(0, uzunluk - 3)) + "\n";
+                    yeniveri += ("\n-------------------------------------------\n") + "\n";
+
+                }
+                Yaz.Close();
+
+                
+            }
+        }
+        
        
     }
 }
