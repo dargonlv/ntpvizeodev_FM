@@ -43,6 +43,10 @@ namespace ntpvizeodev_FM
 
             var list = site.Elements().Elements("item").ToList();
 
+            StreamWriter sil = new StreamWriter("deneme.txt");
+            sil.Write("");
+            sil.Close();
+            Console.Clear();
 
             StreamWriter Yaz = new StreamWriter("deneme.txt", true);
             int uzunluk;
