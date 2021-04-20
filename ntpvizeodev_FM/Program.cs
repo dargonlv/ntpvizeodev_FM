@@ -15,11 +15,20 @@ namespace ntpvizeodev_FM
         public static List<XElement> list = site.Elements().Elements("item").ToList();
         static void Main(string[] args)
         {
-            StreamReader eski = new StreamReader("deneme.txt");
-            string eskiveri = eski.ReadToEnd();
-            Console.WriteLine(eskiveri);
-            eski.Close();
-            ss();
+            try
+            {
+                StreamReader eski = new StreamReader("deneme.txt");
+                string eskiveri = eski.ReadToEnd();
+                Console.WriteLine(eskiveri);
+                eski.Close();
+                ss();
+            }
+            catch (Exception)
+            {
+                islemler();
+                
+            }
+           
         
             }
 
@@ -63,7 +72,7 @@ namespace ntpvizeodev_FM
 
             }
             Yaz.Close();
-            Console.ReadKey();
+            ss();
         }
 
         public static void ss()
@@ -71,6 +80,7 @@ namespace ntpvizeodev_FM
             
             while (true)//sonsuz döngü
             {
+                
 
                 StreamReader eski = new StreamReader("deneme.txt");
                 string eskiveri = eski.ReadToEnd();
