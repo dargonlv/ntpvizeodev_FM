@@ -17,20 +17,32 @@ namespace ntpvizeodev_FM
             
             if (File.Exists("deneme.txt"))
             {
-                FileStream fs = new FileStream("deneme.txt", FileMode.OpenOrCreate, FileAccess.Write);
+                
             }
-
-
+            else
+            {
+                FileStream fs = new FileStream("deneme.txt", FileMode.OpenOrCreate, FileAccess.Write);
+                Console.WriteLine("eklendi");
+                fs.Close();
+            }
+            
+            
             XElement site;
             site = XElement.Load("http://rss.beyazperde.com/haberler/filmler?format=xml");
 
             var list = site.Elements().Elements("item").ToList();
 
 
-
+            StreamWriter Yaz = new StreamWriter("deneme.txt", true);
             int uzunluk;
+
+
+            
             foreach (var item in list)
             {
+                
+                
+
                 Console.WriteLine(item.Element("title").Value);
                 Console.WriteLine(Convert.ToDateTime(item.Element("pubDate").Value));////<----///
                 XElement aciklama = item.Element("description");
@@ -40,7 +52,15 @@ namespace ntpvizeodev_FM
 
                 Console.WriteLine("\n-------------------------------------------\n");
 
+                Yaz.WriteLine(item.Element("title").Value);
+                Yaz.WriteLine(Convert.ToDateTime(item.Element("pubDate").Value));
+
+                Yaz.WriteLine(aciklama.Value.Substring(0, uzunluk - 3));
+                Yaz.WriteLine("\n-------------------------------------------\n");
+
+                Yaz.Close();
             }
+            
             Console.ReadKey();
         }
 
