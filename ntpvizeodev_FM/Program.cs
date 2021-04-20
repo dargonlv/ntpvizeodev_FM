@@ -14,14 +14,13 @@ namespace ntpvizeodev_FM
         
         static void Main(string[] args)
         {
-            Timer t = new Timer(2000);
+            Timer t = new Timer(300000);//60000 = 1 dakka 60000*5=300000
             t.Elapsed += new ElapsedEventHandler(islemler);
             t.Start();
             while (true)
             {
 
             }
-            
         }
 
         public static void islemler(object o, ElapsedEventArgs a)
