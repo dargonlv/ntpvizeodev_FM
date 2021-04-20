@@ -94,7 +94,22 @@ namespace ntpvizeodev_FM
                 }
                 Yaz.Close();
 
-                
+                StreamReader yeni = new StreamReader("deneme.txt");
+
+                if (yeniveri.Length + 200 != eskiveri.Length)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\tYeni bir kaç haber var !!\n");
+                    Console.Write("Bir Tuşa Basınız...");
+                    Console.ReadKey();
+                    yeni.Close();
+                    islemler();
+
+                }
+
+                yeni.Close();
+
+
             }
         }
         
