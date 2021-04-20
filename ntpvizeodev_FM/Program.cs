@@ -15,8 +15,12 @@ namespace ntpvizeodev_FM
         public static List<XElement> list = site.Elements().Elements("item").ToList();
         static void Main(string[] args)
         {
-            
+            StreamReader eski = new StreamReader("deneme.txt");
+            string eskiveri = eski.ReadToEnd();
+            Console.WriteLine(eskiveri);
+            eski.Close();
 
+            ss();
         
             }
 
