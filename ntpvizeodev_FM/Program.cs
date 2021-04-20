@@ -19,7 +19,6 @@ namespace ntpvizeodev_FM
             string eskiveri = eski.ReadToEnd();
             Console.WriteLine(eskiveri);
             eski.Close();
-
             ss();
         
             }
@@ -70,7 +69,7 @@ namespace ntpvizeodev_FM
         public static void ss()
         {
             
-            while (true)
+            while (true)//sonsuz döngü
             {
 
                 StreamReader eski = new StreamReader("deneme.txt");
