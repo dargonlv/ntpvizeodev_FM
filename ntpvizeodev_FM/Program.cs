@@ -79,6 +79,7 @@ namespace ntpvizeodev_FM
             {
                 Console.WriteLine("\n\tYeni bir kaç haber var !!\n");
             }
+            yeni.Close();
             ///////////////////////////////////////////////
             Console.ReadKey();
         }
