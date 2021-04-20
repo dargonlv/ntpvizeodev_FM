@@ -26,10 +26,8 @@ namespace ntpvizeodev_FM
             catch (Exception)
             {
                 islemler();
-                
             }
-           
-        
+
             }
 
         public static void islemler()
@@ -104,7 +102,7 @@ namespace ntpvizeodev_FM
                 Yaz.Close();
 
                 StreamReader yeni = new StreamReader("deneme.txt");
-
+                ////////////////////////////
                 if (yeniveri.Length + 200 != eskiveri.Length)
                 {
                     Console.Clear();
@@ -115,9 +113,9 @@ namespace ntpvizeodev_FM
                     islemler();
 
                 }
-
+                
                 yeni.Close();
-
+                ////////////////////////////
 
             }
         }
